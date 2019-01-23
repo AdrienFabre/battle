@@ -16,6 +16,7 @@ class Battle < Sinatra::Base
     @hitpoints1 = session[:hitpoints1]
     @hitpoints2 = session[:hitpoints2]
     erb :play
+
   end
 
   post '/names' do
@@ -28,6 +29,14 @@ class Battle < Sinatra::Base
 
     redirect '/play'
   end
+
+  get '/attack' do
+    @name1 = session[:player1]
+    @name2 = session[:player2]
+
+    erb :attack
+  end
+
 
   run! if app_file == $0
 
